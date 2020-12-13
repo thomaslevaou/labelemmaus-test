@@ -27,10 +27,11 @@ class App extends Component {
   }
 
   render () {
-    const { schoolsList, loading } = this.state
+    const { schoolsList, loading, currentPageNumber} = this.state
     return (
       <div className="schools">
         <SearchForm onStored={this.displaySchoolsList} onResearchLaunched={this.updateLoadingStatus}/>
+        {currentPageNumber}
         {
           (this.state.loading ? (
             <div className="schoolsList">
