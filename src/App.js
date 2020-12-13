@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm'
-import SchoolsList from './SchoolsList'
+import SchoolsList, {FAKE_SL}  from './SchoolsList'
 import './App.css';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="schools">
         <SearchForm onStored={this.displaySchoolsList}/>
-        {(schoolsList && <SchoolsList schoolResults={schoolsList}/>)}
+        {(FAKE_SL && <SchoolsList schoolResults={FAKE_SL}/>)}
       </div>
     )
   }
