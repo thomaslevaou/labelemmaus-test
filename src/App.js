@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   render () {
-    const { schoolsList } = this.state
+    const { schoolsList, loading } = this.state
     return (
       <div className="schools">
         <SearchForm onStored={this.displaySchoolsList} onResearchLaunched={this.updateLoadingStatus}/>
@@ -38,7 +38,7 @@ class App extends Component {
                 css={override}
                 size={150}
                 color={"#123abc"}
-                loading={this.state.loading}
+                loading={loading}
               />
           </div>) : (schoolsList && (schoolsList.schoolList.length ?
             (<SchoolsList schoolResults={schoolsList}/>) :
