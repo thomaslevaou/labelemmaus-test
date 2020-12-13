@@ -1,36 +1,112 @@
-// import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import ReactMapGL, { Marker } from 'react-map-gl';
+import { Container, Col, Row } from 'reactstrap';
 import fetch from 'cross-fetch'
 import './SchoolsList.css'
 
+const mapStyle = {
+    width: '100%',
+    height: 600
+}
 
 function displaySchoolAdress(htmlToPrint) {
   return { __html: htmlToPrint}
 }
 
-const SchoolsList = ({ schoolResults }) => (
-  <div className="schoolsList">
-    {schoolResults.numberOfSchools} écoles trouvées.
-    <table className="table">
-      <thead>
-        <tr>
-          <th> Nom de l'école </th>
-          <th> Nombre d'étudiants </th>
-          <th> Adresse complète </th>
-        </tr>
-      </thead>
-      <tbody>
-        {schoolResults.schoolList.map(({ schoolid, schoolName, schoolYearlyDetails, address}) => (
-          <tr key={schoolid}>
-            <td>{schoolName}</td>
-            <td>{schoolYearlyDetails[0] ? schoolYearlyDetails[0].numberOfStudents : 'N/A'}</td>
-            <td dangerouslySetInnerHTML={displaySchoolAdress(address.html)}/>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)
+const mapboxApiKey= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
 
+const CustomMarker = ({index, marker}) => {
+  return (
+    <Marker
+      longitude={marker.longitude}
+      latitude={marker.latitude}>
+      <div className="marker">
+        <span><b>{index + 1}</b></span>
+      </div>
+    </Marker>
+)};
+
+
+class SchoolsList extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    var newMarkers = []
+    this.props.schoolResults.schoolList.forEach(({ schoolName, address }) => {
+      if (address.latLong) {
+        let newMarker = {
+          name: schoolName,
+          longitude: address.latLong.longitude,
+          latitude: address.latLong.latitude,
+        }
+        newMarkers = newMarkers.concat(newMarker)
+      }
+    })
+
+    this.state = {
+      viewport: {
+        latitude: 40.50884,
+        longitude: -95.58781,
+        zoom: 3
+      },
+      markers: newMarkers
+    };
+  }
+
+
+  render() {
+    const { viewport } = this.state;
+    return (
+
+    <div className="">
+      <Container fluid={true}>
+        <Row>
+          <Col>
+            <ReactMapGL
+              mapboxApiAccessToken={mapboxApiKey}
+              mapStyle="mapbox://styles/mapbox/streets-v11"
+              {...viewport}
+              {...mapStyle}
+              onViewportChange={(viewport) => this.setState({viewport})}
+            >
+            {
+              this.state.markers.map((marker, index) => {
+                return(
+                  <CustomMarker
+                    key={`marker-${index}`}
+                    index={index}
+                    marker={marker}
+                  />
+                 )
+              })
+            }
+            </ReactMapGL>
+          </Col>
+        </Row>
+      </Container>
+      {this.props.schoolResults.numberOfSchools} écoles trouvées.
+      <table className="table">
+        <thead>
+          <tr>
+            <th> Nom de l'école </th>
+            <th> Nombre d'étudiants </th>
+            <th> Adresse complète </th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.schoolResults.schoolList.map(({ schoolid, schoolName, schoolYearlyDetails, address}) => (
+            <tr key={schoolid}>
+              <td>{schoolName}</td>
+              <td>{schoolYearlyDetails[0] ? schoolYearlyDetails[0].numberOfStudents : 'N/A'}</td>
+              <td dangerouslySetInnerHTML={displaySchoolAdress(address.html)}/>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>);
+  }
+
+}
 
 /* Proptypes à définir asap
 SchoolsList.propTypes = {
@@ -63,7 +139,7 @@ export function getAllSchools (researchParameters, onStored, onResearchLaunched)
     return res.json()
   }).then(data => {
     onResearchLaunched(false)
-    /* data = {
+    data = {
       "_comment": "NOTICE: API limit for Dev/Test is 1 call per minute, up to 20 calls per day. This limit has been reached. You may continue to make calls, but this result is bogus data and should not be used in a production environment. To change your API plan, go to https://developer.schooldigger.com/admin/applications/",
       "numberOfSchools": 12857,
       "numberOfPages": 1286,
@@ -77,6 +153,10 @@ export function getAllSchools (researchParameters, onStored, onResearchLaunched)
           "address": {
             "street": "123 Main St.",
             "city": "Anytown",
+            "latLong":{
+              "latitude": 30.50884,
+              "longitude": -90.58781
+            },
             "state": "CA",
             "stateFull": "California",
             "zip": "99999",
@@ -209,6 +289,10 @@ export function getAllSchools (researchParameters, onStored, onResearchLaunched)
           "url": "https://www.schooldigger.com/(pathtoitem)",
           "urlCompare": "https://www.schooldigger.com/(pathtoitem)",
           "address": {
+            "latLong":{
+              "latitude": 40.50884,
+              "longitude": -100.58781,
+            },
             "street": "123 Main St.",
             "city": "Anytown",
             "state": "CA",
@@ -722,7 +806,7 @@ export function getAllSchools (researchParameters, onStored, onResearchLaunched)
           "hasBoundary": true
         }
       ]
-    } */
+    }
     onStored(data)
   }).catch(err => {
     console.error(err)

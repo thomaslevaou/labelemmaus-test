@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import SearchForm from './SearchForm'
 import SchoolsList  from './SchoolsList'
 import './App.css';
-import mapboxgl from 'mapbox-gl';
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/core";
 
@@ -12,30 +11,12 @@ const override = css`
   border-color: red;
 `;
 
-
-mapboxgl.accessToken = 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 2,
-      schoolsList: null,
-      loading: false
-    };
-  }
 
-
-  componentDidMount() {
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom
-    });
-  }
+  state = {
+    schoolsList: null,
+    loading: false
+  };
 
   displaySchoolsList = schoolsList => {
     this.setState({ schoolsList })
@@ -50,7 +31,6 @@ class App extends Component {
     return (
       <div className="schools">
         <SearchForm onStored={this.displaySchoolsList} onResearchLaunched={this.updateLoadingStatus}/>
-        <div ref={el => this.mapContainer = el} className="mapContainer"/>
         {
           (this.state.loading ? (
             <div className="schoolsList">
