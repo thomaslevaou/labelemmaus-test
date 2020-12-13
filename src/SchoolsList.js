@@ -131,7 +131,7 @@ const APP_KEY = 'beb7298690a7654dde11f33a1586f871'
 export function getAllSchools (researchParameters, onStored, onResearchLaunched) {
   onResearchLaunched(true)
   fetch('https://api.schooldigger.com/v1/schools?st=' + researchParameters.stateName +
-        '&q=' + researchParameters.schoolName + '&appID=' + APP_ID + '&appKey=' + APP_KEY)
+        '&q=' + researchParameters.schoolName + '&page=' + researchParameters.page + '&appID=' + APP_ID + '&appKey=' + APP_KEY)
   .then(res => {
     if (res.status >= 400) {
       throw new Error("Bad response from server")

@@ -22,7 +22,7 @@ class SearchForm extends Component {
 
   startSearch = event => {
     event.preventDefault()
-    const researchParameters = { stateName: this.state.stateName, schoolName: this.state.schoolName, page: this.state.page }
+    const researchParameters = { stateName: this.state.stateName, schoolName: this.state.schoolName, page: this.state.pageNumber }
     getAllSchools(researchParameters, this.props.onStored, this.props.onResearchLaunched)
   }
 
@@ -32,7 +32,7 @@ class SearchForm extends Component {
       <form className="searchFormInput" onSubmit={this.startSearch}>
         <p>
           <label>
-            Pays :
+          État des États-Unis :
             <input
               type="text"
               value={stateName}
