@@ -9,7 +9,7 @@ function displaySchoolAdress(htmlToPrint) {
 const SchoolsList = ({ schoolResults }) => (
   <div className="schoolsList">
     {schoolResults.numberOfSchools} écoles trouvées.
-    <table className="schoolsList table">
+    <table className="table">
       <thead>
         <tr>
           <th> Nom de l'école </th>
@@ -59,7 +59,7 @@ export function getAllSchools (researchParameters, onStored) {
     }
     return res.json()
   }).then(data => {
-    data = {
+    /* data = {
       "_comment": "NOTICE: API limit for Dev/Test is 1 call per minute, up to 20 calls per day. This limit has been reached. You may continue to make calls, but this result is bogus data and should not be used in a production environment. To change your API plan, go to https://developer.schooldigger.com/admin/applications/",
       "numberOfSchools": 12857,
       "numberOfPages": 1286,
@@ -718,7 +718,7 @@ export function getAllSchools (researchParameters, onStored) {
           "hasBoundary": true
         }
       ]
-    }
+    } */
     onStored(data)
   }).catch(err => {
     console.error(err)
