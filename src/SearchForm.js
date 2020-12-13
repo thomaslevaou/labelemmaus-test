@@ -1,14 +1,15 @@
 // import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import './SearchForm.css'
+import { getAllSchools } from './SchoolsList'
 
 
 class SearchForm extends Component {
-  state = { country: '', schoolName: ''}
+  state = { stateName: '', schoolName: ''}
 
   handleCountry = event => {
-    this.setState({ country: event.target.value })
+    this.setState({ stateName: event.target.value })
   }
 
   handleSchoolName = event => {
@@ -17,9 +18,8 @@ class SearchForm extends Component {
 
   startSearch = event => {
     event.preventDefault()
-    // const newEntry = { country: this.state.country, schoolName: this.state.schoolName }
-    alert('Recherche lancée !')
-    // saveHOFEntry(newEntry, this.props.onStored)
+    const researchParameters = { stateName: this.state.stateName, schoolName: this.state.schoolName }
+    getAllSchools(researchParameters, this.props.onStored)
   }
 
   render() {
@@ -30,7 +30,7 @@ class SearchForm extends Component {
             Pays :
             <input
               type="text"
-              value={this.state.country}
+              value={this.state.stateName}
               onChange={this.handleCountry}
             />
           </label>
@@ -49,9 +49,9 @@ class SearchForm extends Component {
   }
 }
 
-/* SearchForm.propTypes = {
-  guesses: PropTypes.number.isRequired,
+
+SearchForm.propTypes = {
   onStored: PropTypes.func.isRequired
-} */
+}
 
 export default SearchForm
