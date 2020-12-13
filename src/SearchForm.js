@@ -20,6 +20,11 @@ class SearchForm extends Component {
     event.preventDefault()
     const researchParameters = { stateName: this.state.stateName, schoolName: this.state.schoolName }
     getAllSchools(researchParameters, this.props.onStored)
+    /*.then((data) => {
+      let allSchool = data
+      console.log('returned schools ?')
+      console.log(allSchool)
+    }) */
   }
 
   render() {
