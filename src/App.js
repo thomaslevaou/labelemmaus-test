@@ -3,6 +3,14 @@ import SearchForm from './SearchForm'
 import SchoolsList  from './SchoolsList'
 import './App.css';
 import mapboxgl from 'mapbox-gl';
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/core";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
@@ -14,7 +22,8 @@ class App extends Component {
       lng: 5,
       lat: 34,
       zoom: 2,
-      schoolsList: null
+      schoolsList: null,
+      loading: false
     };
   }
 
@@ -28,24 +37,33 @@ class App extends Component {
     });
   }
 
-  /* state = {
-  } */
-
   displaySchoolsList = schoolsList => {
     this.setState({ schoolsList })
+  }
+
+  updateLoadingStatus = loading => {
+    this.setState({ loading })
   }
 
   render () {
     const { schoolsList } = this.state
     return (
       <div className="schools">
-        <SearchForm onStored={this.displaySchoolsList}/>
+        <SearchForm onStored={this.displaySchoolsList} onResearchLaunched={this.updateLoadingStatus}/>
         <div ref={el => this.mapContainer = el} className="mapContainer"/>
-        {(schoolsList && (schoolsList.schoolList.length ?
-          (<SchoolsList schoolResults={schoolsList}/>) :
-          (<div className='schoolsList'> Aucun résultat n'a été trouvé. </div>)
+        {
+          (this.state.loading ? (
+            <div className="schoolsList">
+              <ClipLoader
+                css={override}
+                size={150}
+                color={"#123abc"}
+                loading={this.state.loading}
+              />
+          </div>) : (schoolsList && (schoolsList.schoolList.length ?
+            (<SchoolsList schoolResults={schoolsList}/>) :
+            (<div className='schoolsList'> Aucun résultat n'a été trouvé. </div>))
         ))}
-        {/* (schoolsList && <SchoolsList schoolResults={schoolsList}/>) */}
       </div>
     )
   }

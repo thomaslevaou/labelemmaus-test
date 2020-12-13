@@ -1,6 +1,7 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 import fetch from 'cross-fetch'
 import './SchoolsList.css'
+
 
 function displaySchoolAdress(htmlToPrint) {
   return { __html: htmlToPrint}
@@ -30,6 +31,7 @@ const SchoolsList = ({ schoolResults }) => (
   </div>
 )
 
+
 /* Proptypes à définir asap
 SchoolsList.propTypes = {
   entries: PropTypes.arrayOf(
@@ -50,7 +52,8 @@ const APP_ID = 'f62510d9'
 const APP_KEY = 'beb7298690a7654dde11f33a1586f871'
 // const SCHOOLS_KEY = '::SchoolsList'
 
-export function getAllSchools (researchParameters, onStored) {
+export function getAllSchools (researchParameters, onStored, onResearchLaunched) {
+  onResearchLaunched(true)
   fetch('https://api.schooldigger.com/v1/schools?st=' + researchParameters.stateName +
         '&q=' + researchParameters.schoolName + '&appID=' + APP_ID + '&appKey=' + APP_KEY)
   .then(res => {
@@ -59,6 +62,7 @@ export function getAllSchools (researchParameters, onStored) {
     }
     return res.json()
   }).then(data => {
+    onResearchLaunched(false)
     /* data = {
       "_comment": "NOTICE: API limit for Dev/Test is 1 call per minute, up to 20 calls per day. This limit has been reached. You may continue to make calls, but this result is bogus data and should not be used in a production environment. To change your API plan, go to https://developer.schooldigger.com/admin/applications/",
       "numberOfSchools": 12857,

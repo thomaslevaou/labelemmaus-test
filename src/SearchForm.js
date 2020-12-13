@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import './SearchForm.css'
 import { getAllSchools } from './SchoolsList'
 
-
 class SearchForm extends Component {
   state = { stateName: '', schoolName: ''}
 
@@ -19,7 +18,7 @@ class SearchForm extends Component {
   startSearch = event => {
     event.preventDefault()
     const researchParameters = { stateName: this.state.stateName, schoolName: this.state.schoolName }
-    getAllSchools(researchParameters, this.props.onStored)
+    getAllSchools(researchParameters, this.props.onStored, this.props.onResearchLaunched)
   }
 
   render() {
@@ -51,7 +50,8 @@ class SearchForm extends Component {
 
 
 SearchForm.propTypes = {
-  onStored: PropTypes.func.isRequired
+  onStored: PropTypes.func.isRequired,
+  onResearchLaunched: PropTypes.func.isRequired
 }
 
 export default SearchForm
