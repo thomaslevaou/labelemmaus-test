@@ -26,19 +26,20 @@ const CustomMarker = ({index, marker}) => {
     </Marker>
 )};
 
+const DEFAULT_STATE = {
+  viewport: {
+    latitude: 40.50884,
+    longitude: -95.58781,
+    zoom: 3
+  },
+  markers: []
+}
 
 class SchoolsList extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      viewport: {
-        latitude: 40.50884,
-        longitude: -95.58781,
-        zoom: 3
-      },
-      markers: []
-    };
+    this.state = {...DEFAULT_STATE}
   }
 
   componentDidMount() {
@@ -53,7 +54,8 @@ class SchoolsList extends PureComponent {
         newMarkers = newMarkers.concat(newMarker)
       }
     })
-    this.setState({ markers: newMarkers })
+    this.setState(DEFAULT_STATE)
+    console.log(this.state.markers)
   }
 
 
