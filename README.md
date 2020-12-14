@@ -3,8 +3,8 @@
 Réalisation du test technique par Thomas Le Vaou, à la demande de l'équipe de
 recrutement de Label Emmaüs.
 
-Ce projet consiste à utiliser les données de l'API SchoolDigger (https://any-api.com/schooldigger_com/schooldigger_com/docs/_v1_schools/Schools_GetAllSchools)
-de sorte à produire un formulaire permettant de chercher des écoles par État des États-Unis.
+Ce projet consiste à utiliser les données de l'API SchoolDigger (https://any-api.com/schooldigger_com/schooldigger_com/docs/_v1_schools/Schools_GetAllSchools),
+de sorte à produire un formulaire permettant de chercher des écoles des États-Unis, par État et/ou par nom d'école.
 
 Chaque recherche retourne le nombre total de résultats retournés, ainsi que pour les
 résultats de la page demandée par l'utilisateur:
