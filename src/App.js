@@ -8,7 +8,7 @@ import { css } from "@emotion/core";
 const override = css`
   display: block;
   margin: 0 auto;
-  border-color: red;
+  border-color: #E62460;
 `;
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
               <ClipLoader
                 css={override}
                 size={150}
-                color={"#123abc"}
+                color={"#E62460"}
                 loading={loading}
               />
           </div>) : (schoolsList ? (schoolsList.schoolList.length ?
