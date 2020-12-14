@@ -88,15 +88,15 @@ class SearchForm extends Component {
       <Container fluid={true}>
       <form className="searchFormInputList" onSubmit={this.startSearch}>
       <Row>
-        <h1 class="col-md-6"> Label Emmaüs - Test Technique </h1>
-        <div class="col-md-6 credits">Développements réalisés par Thomas Le Vaou</div>
+        <h1 className="col-md-6"> Label Emmaüs - Test Technique </h1>
+        <div className="col-md-6 credits">Développements réalisés par Thomas Le Vaou</div>
       </Row>
           <Row>
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
               <label for="selectStateFromList">
                 État des États-Unis :
               </label>
-              <select id="selectStateFromList" class="form-control" onChange={event => this.handleStateName(event)} value={stateName}>
+              <select id="selectStateFromList" className="form-control" onChange={event => this.handleStateName(event)} value={stateName}>
                 {this.unitedStatesList.length && (
                     this.unitedStatesList.map((usState) => (
                       <option key={usState.code} value={usState.code}>{usState.code} - {usState.fullName}</option>
@@ -104,13 +104,13 @@ class SearchForm extends Component {
                 )}
               </select>
           </div>
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label for="schoolNameInput">
               Nom de l'école :
             </label>
               <input
                 id="schoolNameInput"
-                class="form-control"
+                className="form-control"
                 type="text"
                 value={schoolName}
                 onChange={this.handleSchoolName}
@@ -118,20 +118,20 @@ class SearchForm extends Component {
           </div>
           </Row>
           <Row>
-            <div class="form-group col-md-3 offset-md-6">
+            <div className="form-group col-md-3 offset-md-6">
               <label for="pageNumberField">
                 Page numéro :
               </label>
               <input
                 id="pageNumberField"
                 type="text"
-                class="form-control"
+                className="form-control"
                 value={pageNumber}
                 onChange={this.handlePageNumber}
               />
             </div>
-            <div class="form-group col-md-3">
-              <button type="submit" class="btn btn-lg formButton">Rechercher</button>
+            <div className="form-group col-md-3">
+              <button type="submit" className="btn btn-lg formButton">Rechercher</button>
             </div>
           </Row>
       </form>

@@ -43,7 +43,7 @@ class SchoolsList extends PureComponent {
     return (
     <div>
       <Row>
-        <div class="col-md-4 offset-md-4 numberOfResultText">
+        <div className="col-md-4 offset-md-4 numberOfResultText">
           La recherche a retourné {this.props.schoolResults.numberOfSchools} résultat(s).
         </div>
       </Row>
@@ -79,25 +79,30 @@ class SchoolsList extends PureComponent {
             </ReactMapGL>
           </Col>
         </Row>
-      </Container>
-      <table className="table">
-        <thead>
-          <tr>
-            <th> Nom de l'école </th>
-            <th> Nombre d'étudiants </th>
-            <th> Adresse complète </th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.schoolResults.schoolList.map(({ schoolid, schoolName, schoolYearlyDetails, address}) => (
-            <tr key={schoolid}>
-              <td>{schoolName}</td>
-              <td>{schoolYearlyDetails[0] ? schoolYearlyDetails[0].numberOfStudents : 'N/A'}</td>
-              <td dangerouslySetInnerHTML={displaySchoolAdress(address.html)}/>
+      <br />
+      <Row>
+      <div className="col-md-12">
+        <table className="table table-striped resultsTable table-bordered">
+          <thead className="thead-emmaus">
+            <tr>
+              <th> Nom de l'école </th>
+              <th> Nombre d'étudiants </th>
+              <th> Adresse complète </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-center">
+            {this.props.schoolResults.schoolList.map(({ schoolid, schoolName, schoolYearlyDetails, address}) => (
+              <tr key={schoolid}>
+                <td>{schoolName}</td>
+                <td>{schoolYearlyDetails[0] ? schoolYearlyDetails[0].numberOfStudents : 'N/A'}</td>
+                <td dangerouslySetInnerHTML={displaySchoolAdress(address.html)}/>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      </Row>
+    </Container>
     </div>);
   }
 
