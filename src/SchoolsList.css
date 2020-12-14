@@ -1,5 +1,6 @@
 .schoolsList {
-  margin-top: 300px;
+  margin-top: 150px;
+  text-align: center;
 }
 
 .marker {
@@ -30,4 +31,8 @@
 
 .temporary-marker span {
   background: #D3D3D3;
+}
+
+.numberOfResultText {
+  text-align: center;
 }

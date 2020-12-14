@@ -42,7 +42,11 @@ class SchoolsList extends PureComponent {
     const { viewport } = this.state;
     return (
     <div>
-      La recherche a retourné {this.props.schoolResults.numberOfSchools} résultat(s).
+      <Row>
+        <div class="col-md-4 offset-md-4 numberOfResultText">
+          La recherche a retourné {this.props.schoolResults.numberOfSchools} résultat(s).
+        </div>
+      </Row>
       <Container fluid={true}>
         <Row>
           <Col>

@@ -44,7 +44,7 @@ class App extends Component {
           </div>) : (schoolsList ? (schoolsList.schoolList.length ?
             (<SchoolsList schoolResults={schoolsList}/>) :
             (<div className='schoolsList'> Aucun résultat n'a été trouvé. </div>)) :
-            (<div className='schoolsList'> Veuillez vérifiez les champs que vous souhaitez rechercher, puis appuyez sur "Rechercher" pour lancer la recherche. </div>)
+            (<div className='schoolsList'> Veuillez entrer des critères de recherche, puis appuyez sur "Rechercher" pour effectuer une recherche. </div>)
         ))}
       </div>
     )
