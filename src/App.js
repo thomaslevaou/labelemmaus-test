@@ -19,8 +19,6 @@ class App extends Component {
   };
 
   displaySchoolsList = schoolsList => {
-    console.log('schools list in app')
-    console.log(schoolsList)
     this.setState({ schoolsList })
   }
 

@@ -13,7 +13,10 @@ function displaySchoolAdress(htmlToPrint) {
   return { __html: htmlToPrint}
 }
 
-const mapboxApiKey= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
+const MAPBOX_API_KEY= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
+const SCHOOLDIGGER_APP_ID = 'f62510d9'
+const SCHOOLDIGGER_APP_KEY = 'beb7298690a7654dde11f33a1586f871'
+
 
 const CustomMarker = ({index, marker}) => {
   return (
@@ -26,33 +29,25 @@ const CustomMarker = ({index, marker}) => {
     </Marker>
 )};
 
-
-
 class SchoolsList extends PureComponent {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        latitude: 40.50884,
-        longitude: -95.58781,
-        zoom: 3
-      }
+  state = {
+    viewport: {
+      latitude: 40.50884,
+      longitude: -95.58781,
+      zoom: 3
     }
   }
-
 
   render() {
     const { viewport } = this.state;
     return (
-
     <div>
       La recherche a retourné {this.props.schoolResults.numberOfSchools} résultat(s).
       <Container fluid={true}>
         <Row>
           <Col>
             <ReactMapGL
-              mapboxApiAccessToken={mapboxApiKey}
+              mapboxApiAccessToken={MAPBOX_API_KEY}
               mapStyle="mapbox://styles/mapbox/streets-v11"
               {...viewport}
               {...mapStyle}
@@ -120,14 +115,10 @@ SchoolsList.propTypes = {
 export default SchoolsList
 
 
-const APP_ID = 'eae0df34'
-const APP_KEY = '97413a49bd585791ef0eb9774adcce54'
-// const SCHOOLS_KEY = '::SchoolsList'
-
 export function getAllSchools (researchParameters, onStored, onResearchLaunched) {
   onResearchLaunched(true)
   fetch('https://api.schooldigger.com/v1/schools?st=' + researchParameters.stateName +
-        '&q=' + researchParameters.schoolName + '&page=' + researchParameters.page + '&appID=' + APP_ID + '&appKey=' + APP_KEY)
+        '&q=' + researchParameters.schoolName + '&page=' + researchParameters.page + '&appID=' + SCHOOLDIGGER_APP_ID + '&appKey=' + SCHOOLDIGGER_APP_KEY)
   .then(res => {
     if (res.status >= 400) {
       throw new Error("Bad response from server")
