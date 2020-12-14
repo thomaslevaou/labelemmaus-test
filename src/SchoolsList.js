@@ -6,8 +6,8 @@ import './SchoolsList.css'
 
 
 const MAPBOX_API_KEY= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
-const SCHOOLDIGGER_APP_ID = 'eae0df34'
-const SCHOOLDIGGER_APP_KEY = '97413a49bd585791ef0eb9774adcce54'
+const SCHOOLDIGGER_APP_ID = '7087f8dc'
+const SCHOOLDIGGER_APP_KEY = '9bb749aab27f6041f4caf5e3c35755cd'
 
 const mapStyle = {
     width: '100%',
