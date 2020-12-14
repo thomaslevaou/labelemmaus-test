@@ -5,12 +5,19 @@ import './App.css';
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/core";
 
+// Gestion du .gif d'attente pendant l'appel de l'API
 const override = css`
   display: block;
   margin: 0 auto;
   border-color: #E62460;
 `;
 
+/** @class App
+* @author Thomas Le Vaou
+* @date 13/12/2020
+* @brief La classe App gère les liens entre les composants du formulaire de recherche
+*       et celui du résultat.
+*/
 class App extends Component {
 
   state = {

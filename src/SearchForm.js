@@ -1,10 +1,15 @@
-// import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './SearchForm.css'
 import { getAllSchools } from './SchoolsList'
 import { Container, Row } from 'reactstrap';
 
+
+/** @class SearchForm
+* @author Thomas Le Vaou
+* @date 13/12/2020
+* @brief Component qui gère le formulaire de recherche. 
+*/
 class SearchForm extends Component {
   state = { stateName: 'AL', schoolName: '', pageNumber: 1}
 
@@ -83,7 +88,7 @@ class SearchForm extends Component {
   }
 
   render() {
-    const { stateName, schoolName, pageNumber} = this.state
+    const { stateName, schoolName, pageNumber } = this.state
     return (
       <Container fluid={true}>
       <form className="searchFormInputList" onSubmit={this.startSearch}>

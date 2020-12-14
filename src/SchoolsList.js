@@ -4,20 +4,17 @@ import { Container, Row } from 'reactstrap';
 import fetch from 'cross-fetch'
 import './SchoolsList.css'
 
-const mapStyle = {
-    width: '100%',
-    height: 350
-}
-
-function displaySchoolAdress(htmlToPrint) {
-  return { __html: htmlToPrint}
-}
 
 const MAPBOX_API_KEY= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
 const SCHOOLDIGGER_APP_ID = 'eae0df34'
 const SCHOOLDIGGER_APP_KEY = '97413a49bd585791ef0eb9774adcce54'
 
+const mapStyle = {
+    width: '100%',
+    height: 350
+}
 
+// les marqueurs sur la map, pour les écoles ayant des longitude / latitude
 const CustomMarker = ({index, marker}) => {
   return (
     <Marker
@@ -29,7 +26,20 @@ const CustomMarker = ({index, marker}) => {
     </Marker>
 )};
 
+function displaySchoolAdress(htmlToPrint) {
+  return { __html: htmlToPrint}
+}
+
+/** @class SchoolsList
+* @author Thomas Le Vaou
+* @date 13/12/2020
+* @brief Component qui affiche les résultats d'une recherche, à la fois sur une map
+*       et dans un tableau.
+* @details Si la latitude et la longitude d'une école sont fournies, alors l'école
+*         peut être affichée sur la carte.
+*/
 class SchoolsList extends PureComponent {
+  // Par défaut, la carte est centrée sur les Etats-Unis
   state = {
     viewport: {
       latitude: 40.50884,
@@ -109,7 +119,7 @@ class SchoolsList extends PureComponent {
 
 export default SchoolsList
 
-
+// Appel à l'API
 export function getAllSchools (researchParameters, onStored, onResearchLaunched) {
   onResearchLaunched(true)
   fetch('https://api.schooldigger.com/v1/schools?st=' + researchParameters.stateName +
