@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Label Emmaüs - Test technique
 
 Réalisation du test technique par Thomas Le Vaou, à la demande de l'équipe de
 recrutement de Label Emmaüs.
