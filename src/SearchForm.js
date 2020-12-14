@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './SearchForm.css'
 import { getAllSchools } from './SchoolsList'
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 class SearchForm extends Component {
   state = { stateName: 'AL', schoolName: '', pageNumber: 1}
@@ -87,6 +87,10 @@ class SearchForm extends Component {
     return (
       <Container fluid={true}>
       <form className="searchFormInputList" onSubmit={this.startSearch}>
+      <Row>
+        <h1 class="col-md-6"> Label Emmaüs - Test Technique </h1>
+        <div class="col-md-6 credits">Développements réalisés par Thomas Le Vaou</div>
+      </Row>
           <Row>
           <div class="form-group col-md-6">
               <label for="selectStateFromList">
@@ -114,7 +118,7 @@ class SearchForm extends Component {
           </div>
           </Row>
           <Row>
-            <div class="form-group col-md-1">
+            <div class="form-group col-md-3 offset-md-6">
               <label for="pageNumberField">
                 Page numéro :
               </label>
@@ -126,7 +130,7 @@ class SearchForm extends Component {
                 onChange={this.handlePageNumber}
               />
             </div>
-            <div class="form-group col-md-3 md-offset-8">
+            <div class="form-group col-md-3">
               <button type="submit" class="btn btn-lg formButton">Rechercher</button>
             </div>
           </Row>

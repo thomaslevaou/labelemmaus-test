@@ -24,8 +24,14 @@
   background-color: #E62460;
   color: #fff;
   margin-top: 22px;
+  width: 100%;
 }
 
 .formButton:hover {
   color: #000;
+}
+
+.credits {
+  text-align: right;
+  font-style: italic;
 }
