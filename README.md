@@ -11,7 +11,7 @@ résultats de la page demandée par l'utilisateur:
 - Le nombre d'étudiants de cette école;
 - L'adresse complète de l'école.
 
-Les écoles sont également affichées sur une carte via l'API Mapbox (https://www.mapbox.com/).
+Les résultats de la page sélectionnée sont également affichées sur une carte via l'API Mapbox (https://www.mapbox.com/).
 
 Pour exécuter le code de ce projet, il suffit de le cloner, puis d'entrer les commandes suivantes à la racine du projet
 (en supposant que React.js et Node.js sont déjà installés) :
