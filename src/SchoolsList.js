@@ -85,9 +85,9 @@ class SchoolsList extends PureComponent {
         <table className="table table-striped resultsTable table-bordered">
           <thead className="thead-emmaus">
             <tr>
-              <th> Nom de l'école </th>
-              <th> Nombre d'étudiants </th>
-              <th> Adresse complète </th>
+              <th width='40%'> Nom de l'école </th>
+              <th width='30%'> Nombre d'étudiants </th>
+              <th width='30%'> Adresse complète </th>
             </tr>
           </thead>
           <tbody className="text-center">
