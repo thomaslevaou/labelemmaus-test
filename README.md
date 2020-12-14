@@ -1,7 +1,6 @@
 # Label Emmaüs - Test technique
 
-Réalisation du test technique de Label Emmaüs par Thomas Le Vaou, à la demande de leur équipe de
-recrutement.
+Réalisation du test technique de Label Emmaüs par Thomas Le Vaou.
 
 Ce projet consiste à utiliser les données de l'API SchoolDigger (https://any-api.com/schooldigger_com/schooldigger_com/docs/_v1_schools/Schools_GetAllSchools),
 de sorte à produire un formulaire permettant de chercher des écoles des États-Unis, par État et/ou par nom d'école.
