@@ -31,9 +31,20 @@ class SchoolsList extends PureComponent {
 
   constructor(props) {
     super(props);
+    this.state = {
+      viewport: {
+        latitude: 40.50884,
+        longitude: -95.58781,
+        zoom: 3
+      },
+      markers: []
+    };
+  }
+
+  componentDidMount() {
     var newMarkers = []
     this.props.schoolResults.schoolList.forEach(({ schoolName, address }) => {
-      if (address.latLong) {
+      if (address.latLong && address.latLong.longitude && address.latLong.latitude) {
         let newMarker = {
           name: schoolName,
           longitude: address.latLong.longitude,
@@ -42,20 +53,12 @@ class SchoolsList extends PureComponent {
         newMarkers = newMarkers.concat(newMarker)
       }
     })
-
-    this.state = {
-      viewport: {
-        latitude: 40.50884,
-        longitude: -95.58781,
-        zoom: 3
-      },
-      markers: newMarkers
-    };
+    this.setState({ markers: newMarkers })
   }
 
 
   render() {
-    const { viewport } = this.state;
+    const { viewport, markers } = this.state;
     return (
 
     <div>
@@ -71,7 +74,7 @@ class SchoolsList extends PureComponent {
               onViewportChange={(viewport) => this.setState({viewport})}
             >
             {
-              this.state.markers.map((marker, index) => {
+              markers.map((marker, index) => {
                 return(
                   <CustomMarker
                     key={`marker-${index}`}
