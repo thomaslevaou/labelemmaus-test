@@ -14,7 +14,7 @@ const mapStyle = {
     height: 350
 }
 
-// les marqueurs sur la map, pour les écoles ayant des longitude / latitude
+// Les marqueurs sur la map, pour les écoles ayant des longitudes / latitudes
 const CustomMarker = ({index, marker}) => {
   return (
     <Marker
