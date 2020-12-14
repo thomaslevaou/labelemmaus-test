@@ -14,8 +14,8 @@ function displaySchoolAdress(htmlToPrint) {
 }
 
 const MAPBOX_API_KEY= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
-const SCHOOLDIGGER_APP_ID = 'f62510d9'
-const SCHOOLDIGGER_APP_KEY = 'beb7298690a7654dde11f33a1586f871'
+const SCHOOLDIGGER_APP_ID = 'eae0df34'
+const SCHOOLDIGGER_APP_KEY = '97413a49bd585791ef0eb9774adcce54'
 
 
 const CustomMarker = ({index, marker}) => {
