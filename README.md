@@ -20,4 +20,4 @@ npm install
 npm start
 ```
 
-Ce qui permet d'afficher le résultat du projet dans le navigateur, à l'adresse http://localhost:3000/.
+Ce qui permet d'afficher le résultat du projet dans le navigateur Web, à l'adresse http://localhost:3000/.
