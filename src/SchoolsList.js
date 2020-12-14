@@ -26,41 +26,24 @@ const CustomMarker = ({index, marker}) => {
     </Marker>
 )};
 
-const DEFAULT_STATE = {
-  viewport: {
-    latitude: 40.50884,
-    longitude: -95.58781,
-    zoom: 3
-  },
-  markers: []
-}
+
 
 class SchoolsList extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {...DEFAULT_STATE}
-  }
-
-  componentDidMount() {
-    var newMarkers = []
-    this.props.schoolResults.schoolList.forEach(({ schoolName, address }) => {
-      if (address.latLong && address.latLong.longitude && address.latLong.latitude) {
-        let newMarker = {
-          name: schoolName,
-          longitude: address.latLong.longitude,
-          latitude: address.latLong.latitude,
-        }
-        newMarkers = newMarkers.concat(newMarker)
+    this.state = {
+      viewport: {
+        latitude: 40.50884,
+        longitude: -95.58781,
+        zoom: 3
       }
-    })
-    this.setState(DEFAULT_STATE)
-    console.log(this.state.markers)
+    }
   }
 
 
   render() {
-    const { viewport, markers } = this.state;
+    const { viewport } = this.state;
     return (
 
     <div>
@@ -76,14 +59,22 @@ class SchoolsList extends PureComponent {
               onViewportChange={(viewport) => this.setState({viewport})}
             >
             {
-              markers.map((marker, index) => {
-                return(
-                  <CustomMarker
-                    key={`marker-${index}`}
-                    index={index}
-                    marker={marker}
-                  />
-                 )
+              this.props.schoolResults.schoolList.map(({ schoolName, address }, index) => {
+                if (address.latLong && address.latLong.longitude && address.latLong.latitude) {
+                  let marker = {
+                    name: schoolName,
+                    longitude: address.latLong.longitude,
+                    latitude: address.latLong.latitude,
+                  }
+                  return(
+                    <CustomMarker
+                      key={`marker-${index}`}
+                      index={index}
+                      marker={marker}
+                    />
+                  )
+               }
+               return ''
               })
             }
             </ReactMapGL>
@@ -129,8 +120,8 @@ SchoolsList.propTypes = {
 export default SchoolsList
 
 
-const APP_ID = 'f62510d9'
-const APP_KEY = 'beb7298690a7654dde11f33a1586f871'
+const APP_ID = 'eae0df34'
+const APP_KEY = '97413a49bd585791ef0eb9774adcce54'
 // const SCHOOLS_KEY = '::SchoolsList'
 
 export function getAllSchools (researchParameters, onStored, onResearchLaunched) {
