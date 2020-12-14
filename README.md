@@ -14,7 +14,8 @@ résultats de la page demandée (la première par défaut, avec 10 résultats pa
 
 Les écoles sont également affichées sur une carte via l'API mapbox.
 
-Après avoir cloné le projet, il suffit d'exécuter les commandes suivantes à la racine du projet :
+Pour exécuter le code de ce projet, il suffit de le cloner, puis d'entrer les commandes suivantes à la racine du projet
+(en supposant que React.js et Node.js sont déjà installés) :
 ```
 npm install
 npm start
