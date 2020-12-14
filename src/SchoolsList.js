@@ -105,21 +105,7 @@ class SchoolsList extends PureComponent {
     </Container>
     </div>);
   }
-
 }
-
-/* Proptypes à définir asap
-SchoolsList.propTypes = {
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string.isRequired,
-      guesses: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
-      player: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-}
-*/
 
 export default SchoolsList
 
