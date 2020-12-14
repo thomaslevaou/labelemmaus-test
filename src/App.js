@@ -41,9 +41,10 @@ class App extends Component {
                 color={"#123abc"}
                 loading={loading}
               />
-          </div>) : (schoolsList && (schoolsList.schoolList.length ?
+          </div>) : (schoolsList ? (schoolsList.schoolList.length ?
             (<SchoolsList schoolResults={schoolsList}/>) :
-            (<div className='schoolsList'> Aucun résultat n'a été trouvé. </div>))
+            (<div className='schoolsList'> Aucun résultat n'a été trouvé. </div>)) :
+            (<div className='schoolsList'> Veuillez vérifiez les champs que vous souhaitez rechercher, puis appuyez sur "Rechercher" pour lancer la recherche. </div>)
         ))}
       </div>
     )

@@ -9,3 +9,23 @@
   margin-bottom: 0.2em;
   font-family: Menlo, Monaco, Consolas, Inconsolata, 'Courier New', monospace;
 }
+
+.searchFormInputList {
+    padding: 1.5rem;
+    margin: 1rem -15px 0;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+    border: solid #f7f7f9;
+}
+
+.formButton {
+  border-radius: 25px;
+  background-color: #E62460;
+  color: #fff;
+  margin-top: 22px;
+}
+
+.formButton:hover {
+  color: #000;
+}

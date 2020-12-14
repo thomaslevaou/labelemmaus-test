@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './SearchForm.css'
 import { getAllSchools } from './SchoolsList'
+import { Container, Col, Row } from 'reactstrap';
 
 class SearchForm extends Component {
   state = { stateName: 'AL', schoolName: '', pageNumber: 1}
@@ -84,37 +85,53 @@ class SearchForm extends Component {
   render() {
     const { stateName, schoolName, pageNumber} = this.state
     return (
-      <form className="searchFormInput" onSubmit={this.startSearch}>
-        <p>
-          <label>
-          État des États-Unis :
-            <select onChange={event => this.handleStateName(event)} value={stateName}>
-              {this.unitedStatesList.length && (
-                  this.unitedStatesList.map((usState) => (
-                    <option key={usState.code} value={usState.code}>{usState.code} - {usState.fullName}</option>
-                  ))
-              )}
-            </select>
-          </label>
-          <label>
-            Nom de l'école :
-            <input
-              type="text"
-              value={schoolName}
-              onChange={this.handleSchoolName}
-            />
-          </label>
-          <label>
-            Page numéro :
-            <input
-              type="text"
-              value={pageNumber}
-              onChange={this.handlePageNumber}
-            />
-          </label>
-          <button type="submit">Rechercher</button>
-        </p>
+      <Container fluid={true}>
+      <form className="searchFormInputList" onSubmit={this.startSearch}>
+          <Row>
+          <div class="form-group col-md-6">
+              <label for="selectStateFromList">
+                État des États-Unis :
+              </label>
+              <select id="selectStateFromList" class="form-control" onChange={event => this.handleStateName(event)} value={stateName}>
+                {this.unitedStatesList.length && (
+                    this.unitedStatesList.map((usState) => (
+                      <option key={usState.code} value={usState.code}>{usState.code} - {usState.fullName}</option>
+                    ))
+                )}
+              </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="schoolNameInput">
+              Nom de l'école :
+            </label>
+              <input
+                id="schoolNameInput"
+                class="form-control"
+                type="text"
+                value={schoolName}
+                onChange={this.handleSchoolName}
+              />
+          </div>
+          </Row>
+          <Row>
+            <div class="form-group col-md-1">
+              <label for="pageNumberField">
+                Page numéro :
+              </label>
+              <input
+                id="pageNumberField"
+                type="text"
+                class="form-control"
+                value={pageNumber}
+                onChange={this.handlePageNumber}
+              />
+            </div>
+            <div class="form-group col-md-3 md-offset-8">
+              <button type="submit" class="btn btn-lg formButton">Rechercher</button>
+            </div>
+          </Row>
       </form>
+      </Container>
     )
   }
 }
