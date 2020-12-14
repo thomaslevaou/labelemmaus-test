@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import ReactMapGL, { Marker } from 'react-map-gl';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import fetch from 'cross-fetch'
 import './SchoolsList.css'
 
@@ -49,7 +49,7 @@ class SchoolsList extends PureComponent {
       </Row>
       <Container fluid={true}>
         <Row>
-          <Col>
+          <div class="col-md-12">
             <ReactMapGL
               mapboxApiAccessToken={MAPBOX_API_KEY}
               mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -77,7 +77,7 @@ class SchoolsList extends PureComponent {
               })
             }
             </ReactMapGL>
-          </Col>
+          </div>
         </Row>
       <br />
       <Row>
