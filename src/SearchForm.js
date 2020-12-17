@@ -8,7 +8,7 @@ import { Container, Row } from 'reactstrap';
 /** @class SearchForm
 * @author Thomas Le Vaou
 * @date 13/12/2020
-* @brief Component qui gère le formulaire de recherche. 
+* @brief Component qui gère le formulaire de recherche.
 */
 class SearchForm extends Component {
   state = { stateName: 'AL', schoolName: '', pageNumber: 1}
@@ -98,7 +98,7 @@ class SearchForm extends Component {
       </Row>
           <Row>
           <div className="form-group col-md-6">
-              <label for="selectStateFromList">
+              <label>
                 État des États-Unis :
               </label>
               <select id="selectStateFromList" className="form-control" onChange={event => this.handleStateName(event)} value={stateName}>
@@ -110,7 +110,7 @@ class SearchForm extends Component {
               </select>
           </div>
           <div className="form-group col-md-6">
-            <label for="schoolNameInput">
+            <label>
               Nom de l'école :
             </label>
               <input
@@ -124,7 +124,7 @@ class SearchForm extends Component {
           </Row>
           <Row>
             <div className="form-group col-md-3 offset-md-6">
-              <label for="pageNumberField">
+              <label>
                 Page numéro :
               </label>
               <input

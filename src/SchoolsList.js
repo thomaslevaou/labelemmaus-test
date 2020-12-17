@@ -59,7 +59,7 @@ class SchoolsList extends PureComponent {
       </Row>
       <Container fluid={true}>
         <Row>
-          <div class="col-md-12">
+          <div className="col-md-12">
             <ReactMapGL
               mapboxApiAccessToken={MAPBOX_API_KEY}
               mapStyle="mapbox://styles/mapbox/streets-v11"
