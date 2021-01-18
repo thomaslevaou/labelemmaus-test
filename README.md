@@ -3,7 +3,7 @@
 Réalisation du test technique de Label Emmaüs par Thomas Le Vaou.
 
 Ce projet consiste à utiliser les données de l'API SchoolDigger (https://any-api.com/schooldigger_com/schooldigger_com/docs/_v1_schools/Schools_GetAllSchools),
-de sorte à produire un formulaire permettant de chercher des écoles des États-Unis, par État et/ou par nom d'école.
+de sorte à produire un formulaire en React.js permettant de chercher des écoles des États-Unis, par État et/ou par nom d'école.
 
 Chaque recherche retourne le nombre total de résultats retournés, ainsi que pour les
 résultats de la page demandée par l'utilisateur:
