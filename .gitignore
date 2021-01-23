@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 
-# ajouts TLV
+# ajouts TLV : dans le cadre d'un projet utilisé en entreprise, ajouter .env dans ce .gitignore
 .eslintcache
-.env
