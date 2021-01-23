@@ -5,9 +5,9 @@ import fetch from 'cross-fetch'
 import './SchoolsList.css'
 
 
-const MAPBOX_API_KEY= 'pk.eyJ1IjoicGV0ZXJrb2xpb3MiLCJhIjoiY2tpbmhuY2hvMG9seTJxcDNtZXIyM2R2MyJ9.Hw_QvFeJNr1mFNOcg5o_aw'
-const SCHOOLDIGGER_APP_ID = '7087f8dc'
-const SCHOOLDIGGER_APP_KEY = '9bb749aab27f6041f4caf5e3c35755cd'
+const MAPBOX_API_KEY= process.env.REACT_APP_MAPBOX_API_KEY
+const SCHOOLDIGGER_APP_ID = process.env.REACT_APP_SCHOOLDIGGER_APP_ID
+const SCHOOLDIGGER_APP_KEY = process.env.REACT_APP_SCHOOLDIGGER_APP_KEY
 
 const mapStyle = {
     width: '100%',
